@@ -1,0 +1,7 @@
+{
+  "max_expansions": 200000,
+  "time_limit": 120.0,
+  "arena_runs": 1,
+  "prune": false,
+  "tiebreak": false
+}

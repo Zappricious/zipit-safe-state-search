@@ -1,0 +1,171 @@
+{
+  "about": "A board counts as solved only within the requirement's max_expansions. A level is cleared when every requirement is met (min_solved boards of the suite, default all) and every lower level is cleared. Guide: helpful_text/LEVELS.md",
+  "safety_timeout_s": 120,
+  "review_us_per_expansion": 2000,
+  "timing": {
+    "baseline": "snake_feedback",
+    "baseline_max_expansions": 20000,
+    "repeats": 3,
+    "warmup": 1,
+    "interleave": true,
+    "disable_gc": true
+  },
+  "levels": [
+    {
+      "level": 1,
+      "name": "Walker",
+      "status": "open",
+      "summary": "Small boards. Needs a real walking distance (BFS), not a straight line.",
+      "requirements": [
+        {
+          "suite": "suite_6_8",
+          "max_expansions": 50000
+        },
+        {
+          "suite": "suite_6_4",
+          "max_expansions": 150000
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "name": "Guard",
+      "status": "open",
+      "summary": "7x7 and 8x8. Needs a dead-state check (drop states that are already lost): without one, 7_6 isn't solvable even at 200k.",
+      "requirements": [
+        {
+          "suite": "suite_7_10",
+          "max_expansions": 30000
+        },
+        {
+          "suite": "suite_7_6",
+          "max_expansions": 30000
+        },
+        {
+          "suite": "suite_8_12",
+          "max_expansions": 30000
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "name": "Navigator",
+      "status": "open",
+      "summary": "Hard 8x8 and 9x9. Needs a strong combination: dead-state checks plus a good move-ordering idea.",
+      "requirements": [
+        {
+          "suite": "suite_8_8",
+          "max_expansions": 45000
+        },
+        {
+          "suite": "suite_9_9",
+          "max_expansions": 30000
+        },
+        {
+          "suite": "suite_9_6",
+          "max_expansions": 20000,
+          "min_solved": 5
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "name": "Pathfinder",
+      "status": "open",
+      "summary": "Future. Set just beyond the best cost function found so far (kitchen sink: 9_6 10/10 within 100k, but at most 7-8/10 on 10_12 and 10_8). Open it when someone gets close.",
+      "requirements": [
+        {
+          "suite": "suite_9_6",
+          "max_expansions": 100000
+        },
+        {
+          "suite": "suite_10_12",
+          "max_expansions": 100000,
+          "min_solved": 9
+        },
+        {
+          "suite": "suite_10_8",
+          "max_expansions": 100000,
+          "min_solved": 9
+        },
+        {
+          "suite": "suite_10_6",
+          "max_expansions": 100000,
+          "min_solved": 9
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "name": "Oracle",
+      "status": "open",
+      "summary": "Every board of the three 10x10 suites (all 10 of 10_12, 10_8 and 10_6) within 5,000 expansions: 20x tighter than Level 4, with no misses allowed.",
+      "requirements": [
+        {
+          "suite": "suite_10_12",
+          "max_expansions": 5000
+        },
+        {
+          "suite": "suite_10_8",
+          "max_expansions": 5000
+        },
+        {
+          "suite": "suite_10_6",
+          "max_expansions": 5000
+        }
+      ]
+    },
+    {
+      "level": 6,
+      "name": "Perfect",
+      "status": "open",
+      "summary": "Ceiling: every board of every suite within 8 x cells expansions (288 on 6x6, 392 on 7x7, 512 on 8x8, 648 on 9x9, 800 on 10x10), i.e. almost no wrong turns anywhere.",
+      "requirements": [
+        {
+          "suite": "suite_6_8",
+          "max_expansions": 288
+        },
+        {
+          "suite": "suite_6_4",
+          "max_expansions": 288
+        },
+        {
+          "suite": "suite_7_10",
+          "max_expansions": 392
+        },
+        {
+          "suite": "suite_7_6",
+          "max_expansions": 392
+        },
+        {
+          "suite": "suite_8_12",
+          "max_expansions": 512
+        },
+        {
+          "suite": "suite_8_8",
+          "max_expansions": 512
+        },
+        {
+          "suite": "suite_9_9",
+          "max_expansions": 648
+        },
+        {
+          "suite": "suite_9_6",
+          "max_expansions": 648
+        },
+        {
+          "suite": "suite_10_12",
+          "max_expansions": 800
+        },
+        {
+          "suite": "suite_10_8",
+          "max_expansions": 800
+        },
+        {
+          "suite": "suite_10_6",
+          "max_expansions": 800
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS files
+.DS_Store
+
+# Unrelated local folders/files in workspace
+line_follower_robot/
+Eyes_Over_The_Field_Presentation.pptx
+extracted/
+sim/[0-9]*
